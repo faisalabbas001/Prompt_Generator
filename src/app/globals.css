@@ -101,3 +101,80 @@
 .loader-spin-reverse {
     animation: spin 1s linear infinite reverse;
 }
+
+/* Loader animations */
+@keyframes spin-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.loader-spin {
+    animation: spin 1s linear infinite;
+}
+
+.loader-spin-reverse {
+    animation: spin-reverse 1s linear infinite;
+}
+
+/* Update these scroll styles */
+.result-scroll {
+    height: calc(100vh - 280px); /* Adjusted height */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-right: 8px;
+}
+
+.result-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result-scroll::-webkit-scrollbar-track {
+    background: rgba(45, 45, 45, 0.5);
+    border-radius: 4px;
+}
+
+.result-scroll::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.5);
+    border-radius: 4px;
+}
+
+.result-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.7);
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    .result-scroll {
+        height: calc(100vh - 500px);
+        -webkit-overflow-scrolling: touch; /* Ensure smooth scrolling on iOS */
+        overflow-y: auto;
+        overscroll-behavior: contain; /* Prevents page refresh on pull */
+        touch-action: pan-y; /* Enables smooth touch scrolling */
+    }
+}
+
+/* Add these styles for better typography and spacing */
+.prose {
+  color: #e5e7eb;
+  line-height: 1.75;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+/* Gradient hover effect */
+.gradient-card {
+  transition: all 0.3s ease;
+  background-size: 200% 200%;
+}
+
+.gradient-card:hover {
+  background-position: 100% 100%;
+  border-color: rgba(139, 92, 246, 0.3);
+}

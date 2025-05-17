@@ -142,10 +142,8 @@ const Sections = () => {
     const LoaderAnimation = () => (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1e1e1e]/90 backdrop-blur-sm">
             <div className="relative w-20 h-20">
-                {/* Outer ring */}
                 <div className="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
                 <div className="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full loader-spin"></div>
-                {/* Inner ring */}
                 <div className="absolute inset-3 border-4 border-purple-500/20 rounded-full"></div>
                 <div className="absolute inset-3 border-4 border-transparent border-t-purple-500 rounded-full loader-spin-reverse"></div>
             </div>
@@ -277,7 +275,7 @@ const Sections = () => {
                         <div className="absolute -inset-[1px] bg-gradient-to-b from-white/10 to-transparent rounded-lg"></div>
                         
                         {/* Card content with glass effect */}
-                        <div className="relative flex flex-col h-full bg-[#1e1e1e]/80 rounded-lg border border-gray-800/50 
+                        <div className="relative flex flex-col h-full bg-[#1e1e1e]/80 rounded-lg border border-gray-800/50  scroll-auto
                                     backdrop-blur-md overflow-hidden">
                             {/* Header */}
                             <motion.div 
@@ -305,50 +303,54 @@ const Sections = () => {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0 }}
-                                            className="p-6 h-full overflow-y-auto"
+                                            className="p-6 result-scroll"
                                         >
-                                    
-
-                                            {/* Enhanced Prompt Section */}
-                                            <div className="space-y-6">
-                                                <div className="bg-[#2d2d2d]/50 rounded-lg p-5 backdrop-blur-sm border border-gray-700/30">
-                                                    <h4 className="text-lg font-semibold text-blue-400 mb-3">
-                                                        Enhanced Prompt
-                                                    </h4>
-                                                    <p className="text-gray-300 leading-relaxed">
-                                                        {result.enhancedPrompt}
-                                                    </p>
+                                            <div className="space-y-8">
+                                                {/* Enhanced Prompt Section */}
+                                                <div className="bg-gradient-to-br from-[#2d2d2d]/80 to-[#1e1e1e]/80 rounded-xl p-6 backdrop-blur-sm border border-gray-700/30">
+                                                    <div className="flex items-center gap-3 mb-4">
+                                                        <div className="p-2 bg-blue-500/10 rounded-lg">
+                                                            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                                            Enhanced Prompt
+                                                        </h4>
+                                                    </div>
+                                                    <div className="prose prose-invert max-w-none">
+                                                        <p className="text-gray-300 leading-relaxed text-lg">
+                                                            {result.enhancedPrompt}
+                                                        </p>
+                                                    </div>
                                                 </div>
 
                                                 {/* Instructions Section */}
-                                                <div className="bg-[#2d2d2d]/50 rounded-lg p-5 backdrop-blur-sm border border-gray-700/30">
-                                                    <h4 className="text-lg font-semibold text-purple-400 mb-3">
-                                                        Instructions
-                                                    </h4>
-                                                    <ol className="list-decimal list-inside space-y-2 text-gray-300">
+                                                <div className="bg-gradient-to-br from-[#2d2d2d]/80 to-[#1e1e1e]/80 rounded-xl p-6 backdrop-blur-sm border border-gray-700/30">
+                                                    <div className="flex items-center gap-3 mb-4">
+                                                        <div className="p-2 bg-purple-500/10 rounded-lg">
+                                                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                                                            </svg>
+                                                        </div>
+                                                        <h4 className="text-xl font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                                            Improvement Suggestions
+                                                        </h4>
+                                                    </div>
+                                                    <div className="space-y-3">
                                                         {result.analysis?.improvements.map((improvement, index) => (
-                                                            <li key={index} className="leading-relaxed">
-                                                                {improvement}
-                                                            </li>
+                                                            <div 
+                                                                key={index} 
+                                                                className="flex items-start gap-3 bg-[#2d2d2d]/30 rounded-lg p-4"
+                                                            >
+                                                                <span className="flex items-center justify-center w-6 h-6 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">
+                                                                    {index + 1}
+                                                                </span>
+                                                                <p className="text-gray-300 leading-relaxed">
+                                                                    {improvement}
+                                                                </p>
+                                                            </div>
                                                         ))}
-                                                    </ol>
-                                                </div>
-
-                                                {/* Metadata Section */}
-                                                <div className="mt-6 pt-6 border-t border-gray-700/30">
-                                                    <div className="grid grid-cols-3 gap-4 text-sm">
-                                                        <div className="bg-[#2d2d2d]/30 rounded-lg p-3 backdrop-blur-sm">
-                                                            <span className="text-purple-400 block mb-1">Category</span>
-                                                            <span className="text-gray-300">{result.category}</span>
-                                                        </div>
-                                                        <div className="bg-[#2d2d2d]/30 rounded-lg p-3 backdrop-blur-sm">
-                                                            <span className="text-purple-400 block mb-1">Complexity</span>
-                                                            <span className="text-gray-300">{result.complexity}</span>
-                                                        </div>
-                                                        <div className="bg-[#2d2d2d]/30 rounded-lg p-3 backdrop-blur-sm">
-                                                            <span className="text-purple-400 block mb-1">Length</span>
-                                                            <span className="text-gray-300">1000-1500 words</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
