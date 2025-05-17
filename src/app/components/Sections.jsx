@@ -144,11 +144,10 @@ const Sections = () => {
             <div className="relative w-20 h-20">
                 {/* Outer ring */}
                 <div className="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
-                <div className="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+                <div className="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full loader-spin"></div>
                 {/* Inner ring */}
                 <div className="absolute inset-3 border-4 border-purple-500/20 rounded-full"></div>
-                <div className="absolute inset-3 border-4 border-transparent border-t-purple-500 rounded-full animate-spin" 
-                     style={{ animationDuration: '0.8s', animationDirection: 'reverse' }}></div>
+                <div className="absolute inset-3 border-4 border-transparent border-t-purple-500 rounded-full loader-spin-reverse"></div>
             </div>
             <div className="mt-4 text-blue-400 font-medium animate-pulse">
                 Crafting your perfect prompt...
