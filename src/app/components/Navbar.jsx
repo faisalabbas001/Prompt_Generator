@@ -1,10 +1,29 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Close menu if click is outside of nav elements
+            if (isMobileMenuOpen && !event.target.closest('nav')) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        // Add event listener when menu is open
+        if (isMobileMenuOpen) {
+            document.addEventListener('click', handleClickOutside);
+        }
+
+        // Cleanup function to remove event listener
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isMobileMenuOpen]);
 
     const handleGitHubClick = (e) => {
         e.preventDefault();
